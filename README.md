@@ -1,7 +1,7 @@
 # Automatic SMS/ OTP Verification with the SMS Retriever API
 ## Say no to read sms permission
 
-### * Work if package name is registed on play store
+### * Work if package name is registered on play store
 
 With the SMS Retriever API, you can perform SMS-based user verification in your Android app automatically, without requiring the user to manually type verification codes, and without requiring any extra app permissions. When you implement automatic SMS verification in your app, the verification flow looks like this:
 <img src="https://developers.google.com/identity/sms-retriever/flow-overview.png">
