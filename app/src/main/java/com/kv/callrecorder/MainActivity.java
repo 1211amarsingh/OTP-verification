@@ -76,20 +76,16 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == RESOLVE_HINT) {
             if (resultCode == RESULT_OK) {
-                if (data != null) {
-                    Credential cred = data.getParcelableExtra(Credential.EXTRA_KEY);
-                    if (cred != null) {
-                        String unformattedPhone = cred.getId();
-                        textView.setText(unformattedPhone);
-                        Log.d(TAG, unformattedPhone);
-                    }
-                }
+                Credential credential  = data.getParcelableExtra(Credential.EXTRA_KEY);
+                String unformattedPhone = credential .getId();
+                textView.setText(unformattedPhone);
+                Log.d(TAG, unformattedPhone);
             }
         }
     }
 
     private void startSMSListener() {
-        SMSReceiver smsReceiver = new SMSReceiver();
+        MySMSBroadcastReceiver smsReceiver = new MySMSBroadcastReceiver();
         smsReceiver.setOTPListener(new OTPReceiveListener() {
             @Override
             public void onOTPReceived(String otp) {
@@ -99,11 +95,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onOTPTimeOut() {
                 textView.setText("onOTPTimeOut");
-            }
-
-            @Override
-            public void onOTPReceivedError(String error) {
-                textView.setText(error);
             }
         });
 
